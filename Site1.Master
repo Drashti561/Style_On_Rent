@@ -1,0 +1,361 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Style_On_Rent.Site1" %>
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Style On Rent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; width: 100%; }
+        body { font-family: Arial, Helvetica, sans-serif; background: #ffffff; color: #333333; }
+
+        .main-header {
+            width: 100%; height: 62px;
+            background: #fffdfb;
+            border-bottom: 1px solid #e6dfdc;
+            display: flex; align-items: center;
+            padding: 0 28px;
+        }
+        .header-inner {
+            width: 100%; height: 100%;
+            display: flex; align-items: center;
+        }
+
+        .search-box {
+            width: 150px; height: 31px;
+            display: flex; align-items: center;
+            border-bottom: 1px solid #ded6d3;
+            flex-shrink: 0;
+        }
+        .search-icon {
+            width: 15px; height: 15px;
+            margin-right: 9px; flex-shrink: 0;
+            cursor: pointer;
+        }
+        .search-icon svg {
+            width: 15px; height: 15px;
+            stroke: #4d4042; fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .search-input {
+            width: 100%; border: none; outline: none;
+            background: transparent;
+            font-size: 9px; color: #555555; padding: 0;
+        }
+        .search-input::placeholder { color: #a4a0a2; }
+
+        .logo {
+            margin-left: 25px; margin-right: 27px;
+            color: #570018; text-decoration: none;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 23px; line-height: 1;
+            white-space: nowrap;
+        }
+        .logo:hover { color: #570018; }
+
+        .navigation {
+            display: flex; align-items: center;
+            gap: 25px; height: 100%;
+        }
+        .navigation a {
+            color: #555052; text-decoration: none;
+            font-size: 10px; white-space: nowrap;
+            line-height: 1.2;
+        }
+        .navigation a:hover { color: #620019; }
+
+        .right-icons {
+            margin-left: auto;
+            display: flex; align-items: center;
+            gap: 16px; height: 100%;
+        }
+        .icon-link {
+            width: 20px; height: 20px;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: #554648;
+            position: relative;
+        }
+        .icon-link svg {
+            width: 18px; height: 18px;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.7;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .icon-link:hover { color: #650019; }
+
+        .icon-badge {
+            position: absolute;
+            top: -6px; right: -8px;
+            background: #650019;
+            color: #fff;
+            font-size: 9px;
+            font-weight: bold;
+            border-radius: 50%;
+            min-width: 15px;
+            height: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            line-height: 1;
+        }
+
+        .user-button {
+            width: 23px; height: 23px;
+            border-radius: 50%;
+            background: #5b0018;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .user-button svg {
+            width: 13px; height: 13px;
+            stroke: #ffffff; fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .main-content { width: 100%; min-height: 300px; background: #ffffff; }
+
+        .main-footer {
+            width: 100%; background: #560015;
+            color: #ffffff;
+            padding: 28px 35px 14px;
+        }
+        .footer-container {
+            width: 100%; display: grid;
+            grid-template-columns: 1.45fr 1fr 1fr 1fr;
+            column-gap: 60px;
+        }
+        .footer-brand h3 {
+            margin: 0 0 8px 0; color: #ffffff;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 9px; font-weight: bold;
+        }
+        .footer-brand p {
+            width: 170px; margin: 0;
+            color: #e4cfd3; font-size: 6px; line-height: 1.5;
+        }
+        .social-icons {
+            display: flex; align-items: center;
+            gap: 8px; margin-top: 10px;
+        }
+        .social-icons a {
+            width: 12px; height: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: #ffffff; text-decoration: none;
+        }
+        .social-icons svg {
+            width: 10px; height: 10px;
+            stroke: currentColor; fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .social-icons a:first-child svg,
+        .social-icons a:last-child svg { fill: currentColor; stroke: none; }
+        .social-icons a:hover { color: #d4af37; }
+
+        .footer-column h4 {
+            margin: 0 0 8px 0;
+            color: #d8b8bf; font-size: 6px;
+            font-weight: normal; letter-spacing: 1.5px;
+        }
+        .footer-column a {
+            display: block; margin-bottom: 5px;
+            color: #ffffff; text-decoration: none;
+            font-size: 6.5px;
+        }
+        .footer-column a:hover { color: #d4af37; }
+
+        .footer-bottom {
+            width: 100%; margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.18);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .footer-bottom span { color: #cdb5ba; font-size: 5.5px; }
+
+        @media (max-width: 900px) {
+            .main-header { padding: 0 20px; }
+            .search-box { width: 130px; }
+            .logo { font-size: 20px; margin-left: 17px; margin-right: 18px; }
+            .navigation { gap: 14px; }
+            .navigation a { font-size: 9px; }
+            .right-icons { gap: 10px; }
+            .footer-container { grid-template-columns: 2fr 1fr 1fr; row-gap: 30px; }
+        }
+        @media (max-width: 650px) {
+            .main-header { height: auto; padding: 15px 18px; }
+            .header-inner { flex-wrap: wrap; justify-content: center; gap: 14px; }
+            .search-box { order: 2; width: 100%; }
+            .logo { order: 1; margin: 0; }
+            .navigation { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; }
+            .right-icons { order: 4; margin-left: 0; }
+            .footer-container { grid-template-columns: 1fr; row-gap: 30px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+<form id="form1" runat="server">
+
+    <header class="main-header">
+        <div class="header-inner">
+
+            <div class="search-box">
+                <span class="search-icon" onclick="doSearch()">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21"></line>
+                    </svg>
+                </span>
+                <input type="text" class="search-input"
+                       id="navbarSearch"
+                       placeholder="Search our collection..."
+                       onkeypress="handleSearchKey(event)" />
+            </div>
+
+            <a href="home.aspx" class="logo">Style On Rent</a>
+
+            <nav class="navigation">
+                <a href="Collections.aspx">Collections</a>
+                <a href="CustomersReview.aspx">Reviews</a>
+                <a href="AboutUs.aspx">About Us</a>
+                <a href="home.aspx">Home</a>
+            </nav>
+
+            <div class="right-icons">
+
+                <!-- ❤ WISHLIST -->
+                <a href="Wishlist.aspx" class="icon-link" title="Wishlist">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.8 8.6 C20.8 13.4 12 20 12 20 S3.2 13.4 3.2 8.6 C3.2 5.9 5.1 4.2 7.6 4.2 C9.2 4.2 10.7 5.1 12 6.5 C13.3 5.1 14.8 4.2 16.4 4.2 C18.9 4.2 20.8 5.9 20.8 8.6Z"></path>
+                    </svg>
+                    <asp:Label ID="lblWishCount" runat="server" CssClass="icon-badge" Visible="false" />
+                </a>
+
+                <!-- 🔔 BELL -->
+                <a href="Notification.aspx" class="icon-link" title="Notifications">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 17 H19 L17.5 14 V9 C17.5 5.8 15.3 3.5 12 3.5 C8.7 3.5 6.5 5.8 6.5 9 V14 Z"></path>
+                        <path d="M10 20 C10.5 21 13.5 21 14 20"></path>
+                    </svg>
+                </a>
+
+                <!-- 🛍 SHOPPING BAG -->
+                <a href="RentalCart.aspx" class="icon-link" title="Shopping Bag">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 8 H19 L18 21 H6 Z"></path>
+                        <path d="M9 8 V6 C9 3.8 10.3 2.5 12 2.5 C13.7 2.5 15 3.8 15 6 V8"></path>
+                    </svg>
+                    <asp:Label ID="lblCartCount" runat="server" CssClass="icon-badge" Visible="false" />
+                </a>
+
+                <!-- 👤 USER -->
+                <a href="Profile.aspx" class="icon-link" title="Account">
+                    <span class="user-button">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="3"></circle>
+                            <path d="M5 19 C5.5 15.5 8.2 13.5 12 13.5 C15.8 13.5 18.5 15.5 19 19"></path>
+                        </svg>
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <h3>STYLE ON RENT</h3>
+                <p>Elevated bridal and festive wear for rent. Experience luxury without the commitment.</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v5h4v-5h3.5l.5-4H13V9c0-.7.3-1 1-1Z"></path></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+                            <circle cx="12" cy="12" r="3.5"></circle>
+                            <circle cx="17.3" cy="6.8" r="1"></circle>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Pinterest">
+                        <svg viewBox="0 0 24 24"><path d="M12 4.2a7.8 7.8 0 0 0-2.8 15.1c-.1-1.3 0-2.8.4-4l1-4.1s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.4-.9 3.7-.3 1.1.6 2 1.7 2 2 0 3.5-2.1 3.5-5.1 0-2.7-1.9-4.6-4.7-4.6-3.2 0-5.1 2.4-5.1 4.9 0 1 .4 2.1.9 2.7.1.1.1.2.1.4l-.3 1.2c-.1.4-.3.5-.7.3-1.4-.7-2.3-2.8-2.3-4.5 0-3.7 2.7-7.1 7.7-7.1 4 0 7.1 2.9 7.1 6.7 0 4-2.5 7.2-5.9 7.2-1.2 0-2.4-.6-2.8-1.3l-.7 2.6c-.3 1.1-1.1 2.5-1.6 3.4.9.3 1.9.5 2.9.5A7.8 7.8 0 0 0 12 4.2Z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>QUICK LINKS</h4>
+                <a href="home.aspx">Home</a>
+                <a href="Collections.aspx">Collections</a>
+                <a href="BridalLehengas.aspx">Bridal Lehengas</a>
+                <a href="AboutUs.aspx">About Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>CUSTOMER SUPPORT</h4>
+                <a href="DeliveryDetails.aspx">Delivery Details</a>
+                <a href="ShoppingDetails.aspx">Shopping Details</a>
+                <a href="OrderConfirmed.aspx">Track Order</a>
+                <a href="YourExperience.aspx">Your Experience</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>POLICIES</h4>
+                <a href="SecuritySettings.aspx">Security Settings</a>
+                <a href="Profile.aspx">My Profile</a>
+                <a href="Wishlist.aspx">Wishlist</a>
+                <a href="RentalCart.aspx">Rental Cart</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2024 Style On Rent. All Rights Reserved.</span>
+            <span>Designed for Elegance.</span>
+        </div>
+    </footer>
+
+    <!-- ===== SEARCH SCRIPT ===== -->
+    <script type="text/javascript">
+        function doSearch() {
+            var q = document.getElementById('navbarSearch').value.trim();
+            if (q.length > 0) {
+                window.location.href = 'Collections.aspx?search=' + encodeURIComponent(q);
+            } else {
+                window.location.href = 'Collections.aspx';
+            }
+        }
+
+        function handleSearchKey(e) {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault();
+                doSearch();
+            }
+        }
+    </script>
+
+</form>
+</body>
+</html>
